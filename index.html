@@ -49,7 +49,7 @@
         <div class="col-md-4">
           <h3>Contact Us</h3>
 
-          <form action="">
+          <form id="contact-form" action="">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" class="form-control" id="name" />
@@ -97,5 +97,33 @@
       integrity="sha256-MoNNcfsGFhJivMDWjFnQ2ugFxcHJlTdtI1xigtqV1s="
       crossorigin="anonymous"
     ></script>
+
+
+    <script>
+      const form = document.querySelector('#contact-form');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.querySelector('#email').value;
+        const name = document.querySelector('#name').value;
+        const message = document.querySelector('#message').value;
+
+        const msg = `Email: ${email};\nName: ${name};\nMSG: ${message}.`
+        const encoded = encodeURI(msg);
+        const url = `https://api.telegram.org/bot1747774235:AAE7ntucnvccIORKbzUAUQ0twjJObTOS5WM/sendMessage?chat_id=-895146367&text=${encoded}`
+
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(function(response) {
+          if (response.ok) {
+            console.log("response - success");
+          }
+        })
+      })
+    </script>
+
   </body>
 </html>
