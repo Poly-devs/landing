@@ -106,7 +106,7 @@
         const name = document.querySelector('#name').value;
         const message = document.querySelector('#message').value;
 
-        const msg = `Email: ${email};\nName: ${name};\nMSG: ${message}.`
+        const msg = `Email: ${email}\nName: ${name}\nMessage: ${message}`
         const encoded = encodeURI(msg);
         const url = `https://api.telegram.org/bot1747774235:AAE7ntucnvccIORKbzUAUQ0twjJObTOS5WM/sendMessage?chat_id=-895146367&text=${encoded}`
 
